@@ -70,4 +70,6 @@ while True:
             a = '[ERROR #1]: Invalid Data Type'
 
         window['-ANS-'].update(a)
+       
+window.close()
 
