@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from numpy import pad, size
 
 def isfloat(num):
     try:
@@ -7,16 +8,18 @@ def isfloat(num):
     except ValueError:
         return False
 
+
+
 layout = [
-    [sg.Text('Converter')],
-    [sg.Text('Enter Value : '), sg.Input(key='-INPUT-')],
-    [sg.Text('Select Unit From:\t'), sg.Spin(['Kms/hr', 'Miles/hr', 'm/s'], key='-FROM-')],
-    [sg.Text('Select Unit To:\t'), sg.Spin(['Kms/hr', 'Miles/hr', 'm/s'], key='-TO-')],
-    [sg.Button('Convert', key='-CONVERT-')],
-    [sg.Text('', key='-ANS-')]
+    [sg.Text('Converter', font=('Phosphate', 25), size=(10, 2))],
+    [sg.Text('Enter Value:\t', font=('Big Caslon', 17)), sg.Input(key='-INPUT-', size=(9, 1), font=('Big Caslon', 17))],
+    [sg.Text('Select Unit From:\t', font=('Big Caslon', 17)), sg.Spin(['Kms/hr', 'Miles/hr', 'm/s'], key='-FROM-', font=('Big Caslon', 17), size=(8, 1))],
+    [sg.Text('Select Unit To:\t', font=('Big Caslon', 17)), sg.Spin(['Kms/hr', 'Miles/hr', 'm/s'], key='-TO-', font=('Big Caslon', 17), size=(8, 1))],
+    [sg.Button('Convert', key='-CONVERT-', font=('Big Caslon', 17))],
+    [sg.Text('', key='-ANS-', font=('Big Caslon', 17))]
 ]
 
-window = sg.Window('Converter', layout)
+window = sg.Window('Converter', layout, margins=(10, 10))
 
 while True:
     event, values = window.read()
@@ -70,6 +73,5 @@ while True:
             a = '[ERROR #1]: Invalid Data Type'
 
         window['-ANS-'].update(a)
-       
-window.close()
 
+window.close()
